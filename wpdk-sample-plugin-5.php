@@ -3,7 +3,7 @@
  * Plugin Name:     WPDK Sample Plugin #5
  * Plugin URI:      https://wpxtre.me
  * Description:     Sample #5 of WordPress plugin developed with WPDK framework - see readme.md in plugin root directory for details
- * Version:         1.0.0
+ * Version:         1.1.0
  * Author:          wpXtreme
  * Author URI:      https://wpxtre.me
  * Text Domain:     wpdk-sample-plugin-5
@@ -12,15 +12,15 @@
 
 // Include WPDK framework - the root directory name of WPDK may be different.
 // Please change the line below according to your environment.
-require_once( trailingslashit( dirname( dirname( __FILE__ ))) . 'wpdk-production/wpdk.php' );
+require_once( trailingslashit( dirname( dirname( __FILE__ ) ) ) . 'wpdk-production/wpdk.php' );
 
 /**
  * WPDKSamplePlugin5 is the main class of this plugin, and extends WPDKWordPressPlugin
  *
  * @class              WPDKSamplePlugin5
- * @author             wpXtreme team
- * @copyright          Copyright (C) __WPXGENESI_PLUGIN_AUTHOR__.
- * @date               2013-07-20
+ * @author             =undo= <info@wpxtre.me>
+ * @copyright          Copyright (C) 2012-2014 wpXtreme Inc. All Rights Reserved.
+ * @date               2014-03-07
  * @version            1.0.0
  *
  */
@@ -35,7 +35,8 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
    *
    * @return WPDKSamplePlugin5 object instance
    */
-  public function __construct( $file ) {
+  public function __construct( $file )
+  {
 
     parent::__construct( $file );
 
@@ -43,7 +44,7 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
     $this->defines();
 
     // Build environment of plugin autoload of internal classes - this is ALWAYS the first thing to do
-    $this->_registerClasses();
+    $this->registerClasses();
 
   }
 
@@ -52,15 +53,27 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
    *
    * @brief Autoload classes
    */
-  private function _registerClasses() {
+  private function registerClasses()
+  {
+
+    /*
+     * This is a sample only! However we suggest to find a guide for naming file and class. For example in this case
+     * the better solution will be
+     *
+     *     'wpdk-sample-admin.php'                      => 'WPDKSampleAdmin',
+     *     'wpdk-sample-preferences.php'                => 'WPDKSamplePreferences',
+     *     'wpdk-sample-preferences-viewcontroller.php' => 'WPDKSamplePreferencesViewController',
+     *     'wpdk-sample-about-viewcontroller.php'       => 'WPDKSampleAboutViewController',
+     *
+     * The "wrong" naming below is just to realize that you can do what you want, without restrict
+     *
+     */
 
     $includes = array(
-      $this->classesPath . 'admin/wpdk-sample-admin.php'              => 'WPDKSamplePlugin5Admin',
-      $this->classesPath . 'config/wpdk-sample-configuration-vc.php'  => 'ControlsConfiguration5ViewController',
-      $this->classesPath . 'config/wpdk-sample-configuration.php'     => 'ControlsConfiguration5',
-      $this->classesPath . 'config/about-vc.php'                      => 'About5ViewController',
-      $this->classesPath . 'config/controls-configuration-view.php'   => 'ControlsConfiguration5View',
-      $this->classesPath . 'config/controls-settings.php'             => 'ControlsSettings5'
+      $this->classesPath . 'admin/wpdk-sample-admin.php'                             => 'WPDKSamplePlugin5Admin',
+      $this->classesPath . 'preferences/wpdk-sample-preferences.php'                 => 'PreferencesModel',
+      $this->classesPath . 'preferences/wpdk-sample-preferences-viewcontroller.php'  => 'PreferencesViewController',
+      $this->classesPath . 'other/about-viewcontroller.php'                          => 'About5ViewController',
     );
 
     $this->registerAutoloadClass( $includes );
@@ -68,13 +81,13 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
   }
 
 
-
   /**
    * Include the external defines file
    *
    * @brief Defines
    */
-  private function defines() {
+  private function defines()
+  {
     include_once( 'defines.php' );
   }
 
@@ -83,7 +96,10 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
    *
    * @brief Activation
    */
-  public function activation() {
+  public function activation()
+  {
+    // When you update your plugin it is re-activate. In this place you can update your preferences
+    PreferencesModel::init()->delta();
   }
 
   /**
@@ -91,17 +107,19 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
    *
    * @brief Admin backend
    */
-  public function admin() {
+  public function admin()
+  {
     WPDKSamplePlugin5Admin::init( $this );
   }
 
   /**
-   * Ready to init plugin configuration
+   * Init your own preferences settings
    *
-   * @brief Init configuration
+   * @brief Preferences
    */
-  public function configuration() {
-    ControlsConfiguration5::init();
+  public function preferences()
+  {
+    PreferencesModel::init();
   }
 
   /**
@@ -109,8 +127,9 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
    *
    * @brief Deactivation
    */
-  public function deactivation() {
-    /** To override. */
+  public function deactivation()
+  {
+    // To override
   }
 
 }
