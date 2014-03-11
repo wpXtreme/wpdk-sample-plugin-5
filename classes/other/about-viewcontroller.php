@@ -1,21 +1,21 @@
 <?php
 
 /**
- * @class              About5ViewController
+ * @class              AboutViewController
  * @author             =undo= <info@wpxtre.me>
  * @copyright          Copyright (C) 2012-2014 wpXtreme Inc. All Rights Reserved.
  * @date               2014-03-07
  * @version            1.0.0
  *
  */
-class About5ViewController extends WPDKViewController {
+class AboutViewController extends WPDKViewController {
 
   /**
-   * Create an instance of About5ViewController class
+   * Create an instance of AboutViewController class
    *
    * @brief Construct
    *
-   * @return About5ViewController
+   * @return AboutViewController
    */
   public function __construct()
   {

@@ -107,7 +107,7 @@ class WPDKSamplePlugin5Admin extends WPDKWordPressAdmin {
           array(
             'menuTitle'      => __( 'Show About' ),
             'pageTitle'      => __( 'wpdk sample plugin #5 - Show About' ),
-            'viewController' => 'About5ViewController',
+            'viewController' => 'AboutViewController',
           ),
         )
       )

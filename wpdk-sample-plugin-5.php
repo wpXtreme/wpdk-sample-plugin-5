@@ -73,7 +73,7 @@ final class WPDKSamplePlugin5 extends WPDKWordPressPlugin {
       $this->classesPath . 'admin/wpdk-sample-admin.php'                             => 'WPDKSamplePlugin5Admin',
       $this->classesPath . 'preferences/wpdk-sample-preferences.php'                 => 'PreferencesModel',
       $this->classesPath . 'preferences/wpdk-sample-preferences-viewcontroller.php'  => 'PreferencesViewController',
-      $this->classesPath . 'other/about-viewcontroller.php'                          => 'About5ViewController',
+      $this->classesPath . 'other/about-viewcontroller.php'                          => 'AboutViewController',
     );
 
     $this->registerAutoloadClass( $includes );
