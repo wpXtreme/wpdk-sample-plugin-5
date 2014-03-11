@@ -92,10 +92,10 @@ class MySettingBranch extends WPDKPreferencesBranch {
   public function defaults()
   {
     // Se the default for the first time or reset preferences
-    $this->value_text_box   = '123';
-    $this->value_check_box  = '';
-    $this->value_combo_box  = '';
-    $this->value_swipe      = '';
+    $this->value_text_box  = '123';
+    $this->value_check_box = '';
+    $this->value_combo_box = '';
+    $this->value_swipe     = '';
   }
 
   /**
@@ -107,10 +107,10 @@ class MySettingBranch extends WPDKPreferencesBranch {
   {
     // Update and sanitize from post data
 
-    $this->value_text_box   = absint( $_POST[self::MY_VALUE]); // note the constant in view
-    $this->value_check_box  = 'value_check_box';
-    $this->value_combo_box  = 'value_combo_box';
-    $this->value_swipe      = 'value_swipe';
+    $this->value_text_box  = absint( $_POST[ self::MY_VALUE ] ); // note the constant in view
+    $this->value_check_box = 'value_check_box';
+    $this->value_combo_box = 'value_combo_box';
+    $this->value_swipe     = 'value_swipe';
 
   }
 
