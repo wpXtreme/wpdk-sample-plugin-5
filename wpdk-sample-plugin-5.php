@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:     WPDK Sample Plugin #5
- * Plugin URI:      https://wpxtre.me
+ * Plugin URI:      http://wpdk.io
  * Description:     Sample #5 of WordPress plugin developed with WPDK framework - see readme.md in plugin root directory for details
  * Version:         1.1.0
  * Author:          wpXtreme
